@@ -31,7 +31,7 @@ flags = {
     ["Names"] = false; 
     ["Name_Color"] = { Color = rgb(255, 255, 255) };
     ["Boxes"] = false;
-    ["Box_Type"] = "Corner";
+    ["Box_Type"] = "Normal";
     ["Box_Color"] = { Color = rgb(255, 255, 255) };
     ["Healthbar"] = false; 
     ["Health_High"] = { Color = rgb(0, 255, 0) };
@@ -675,10 +675,5 @@ getgenv().update_flags = function()
     end
 end
 getgenv().refresh = function()
-    esp.refresh_elements()
-end
-
-while true do
-    task.wait(.6)
     esp.refresh_elements()
 end
