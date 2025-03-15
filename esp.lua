@@ -26,7 +26,7 @@ local numkey = NumberSequenceKeypoint.new
 
 local camera = workspace.CurrentCamera
 
-flags = {
+local flags = {
     ["Enabled"] = false;
     ["Names"] = false; 
     ["Name_Color"] = { Color = rgb(255, 255, 255) };
@@ -138,7 +138,7 @@ esp = { players = {}, screengui = Instance.new("ScreenGui", gethui()), cache = I
 
         function esp:create_object( player )
             esp[ player.Name ] = { objects = { }, info = {character = character; humanoid = humanoid}; drawings = { }} 
-            local data = esp[ player.Name ] 
+            data = esp[ player.Name ] 
 
             local objects = data.objects; do
                 objects[ "holder" ] = esp:create( "Frame" , {
@@ -583,7 +583,7 @@ esp = { players = {}, screengui = Instance.new("ScreenGui", gethui()), cache = I
             end
 
             for _, player in players:GetPlayers() do 
-                local data = esp[player.Name]
+                data = esp[player.Name]
 
                 if not data then 
                     continue 
