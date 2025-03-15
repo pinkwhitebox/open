@@ -26,7 +26,7 @@ local numkey = NumberSequenceKeypoint.new
 
 local camera = workspace.CurrentCamera
 
-local flags = {
+flags = {
     ["Enabled"] = false;
     ["Names"] = false; 
     ["Name_Color"] = { Color = rgb(255, 255, 255) };
