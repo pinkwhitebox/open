@@ -1,3 +1,4 @@
+task.spawn(function()
 local workspace = cloneref(game:GetService("Workspace"))
 local run = cloneref(game:GetService("RunService"))
 local http_service = cloneref(game:GetService("HttpService"))
@@ -14,8 +15,8 @@ local point_object_space = empty_cfr.PointToObjectSpace
 local angle = CFrame.Angles
 local dim_offset = UDim2.fromOffset
 
-local color = Color3.new
-local rgb = Color3.fromRGB
+getgenv().color = Color3.new
+getgenv().rgb = Color3.fromRGB
 local hex = Color3.fromHex
 local hsv = Color3.fromHSV
 local rgbseq = ColorSequence.new
@@ -25,33 +26,18 @@ local numkey = NumberSequenceKeypoint.new
 
 local camera = workspace.CurrentCamera
 
-local bones = {
-    {"Head", "UpperTorso"},
-    {"UpperTorso", "LowerTorso"},
-    {"UpperTorso", "LeftUpperArm"},
-    {"UpperTorso", "RightUpperArm"},
-    {"LeftUpperArm", "LeftLowerArm"},
-    {"RightUpperArm", "RightLowerArm"},
-    {"LowerTorso", "LeftUpperLeg"},
-    {"LowerTorso", "RightUpperLeg"},
-    {"LeftUpperLeg", "LeftLowerLeg"},
-    {"RightUpperLeg", "RightLowerLeg"},
-}
-
-local flags = {
-    ["Enabled"] = true;
-    ["Names"] = true; 
+flags = {
+    ["Enabled"] = false;
+    ["Names"] = false; 
     ["Name_Color"] = { Color = rgb(255, 255, 255) };
-    ["Boxes"] = true;
+    ["Boxes"] = false;
     ["Box_Type"] = "Corner";
     ["Box_Color"] = { Color = rgb(255, 255, 255) };
-    ["Healthbar"] = true; 
+    ["Healthbar"] = false; 
     ["Health_High"] = { Color = rgb(0, 255, 0) };
     ["Health_Low"] = { Color = rgb(255, 0, 0) };
-    ["Distance"] = true;
-    ["Weapon"] = true;
-    ["Skeletons"] = false;
-    ["Skeletons_Color"] = { Color = rgb(255, 255, 255) };
+    ["Distance"] = false;
+    ["Weapon"] = false;
     ["Distance_Color"] = { Color = rgb(255, 255, 255) };
     ["Weapon_Color"] = { Color = rgb(255, 255, 255) };
 }
@@ -92,7 +78,7 @@ local fonts = {}; do
     }
 end
 
-local esp = { players = {}, screengui = Instance.new("ScreenGui", gethui()), cache = Instance.new("ScreenGui", gethui()), connections = {}}; do 
+esp = { players = {}, screengui = Instance.new("ScreenGui", gethui()), cache = Instance.new("ScreenGui", gethui()), connections = {}}; do 
     esp.screengui.IgnoreGuiInset = true
     esp.screengui.Name = "\0"
 
@@ -676,3 +662,18 @@ esp.player_removed = players.PlayerRemoving:Connect(function(v)
     esp:remove_object(v)
 end)
 
+end)
+
+-- proxy functions
+getgenv().update_flags = function()
+    for a, b in pairs(flags) do
+        if getgenv()[a] ~= nil then
+            flags[a] = getgenv()[a]
+        else
+            flags[a] = b
+        end
+    end
+end
+getgenv().refresh = function()
+    esp.refresh_elements()
+end
