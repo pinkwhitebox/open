@@ -27,17 +27,17 @@ local numkey = NumberSequenceKeypoint.new
 local camera = workspace.CurrentCamera
 
 flags = {
-    ["Enabled"] = false;
-    ["Names"] = false; 
+    ["Enabled"] = true;
+    ["Names"] = true; 
     ["Name_Color"] = { Color = rgb(255, 255, 255) };
-    ["Boxes"] = false;
+    ["Boxes"] = true;
     ["Box_Type"] = "Normal";
     ["Box_Color"] = { Color = rgb(255, 255, 255) };
-    ["Healthbar"] = false; 
+    ["Healthbar"] = true; 
     ["Health_High"] = { Color = rgb(0, 255, 0) };
     ["Health_Low"] = { Color = rgb(255, 0, 0) };
-    ["Distance"] = false;
-    ["Weapon"] = false;
+    ["Distance"] = true;
+    ["Weapon"] = true;
     ["Distance_Color"] = { Color = rgb(255, 255, 255) };
     ["Weapon_Color"] = { Color = rgb(255, 255, 255) };
 }
