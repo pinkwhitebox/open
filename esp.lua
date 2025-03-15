@@ -677,3 +677,8 @@ end
 getgenv().refresh = function()
     esp.refresh_elements()
 end
+
+while true do
+    task.wait(.6)
+    esp.refresh_elements()
+end
