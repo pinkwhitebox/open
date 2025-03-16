@@ -1,4 +1,5 @@
 task.spawn(function()
+pcall(function()
 local workspace = cloneref(game:GetService("Workspace"))
 local run = cloneref(game:GetService("RunService"))
 local http_service = cloneref(game:GetService("HttpService"))
@@ -451,7 +452,7 @@ esp = { players = {}, screengui = Instance.new("ScreenGui", gethui()), cache = I
                     local selected_layout = objects[ player.Name ]
                     local humanoid = data.info.humanoid
                     
-                    local multiplier = value / humanoid.MaxHealth
+                    local multiplier = value / 100
                     local color = flags[ "Health_Low" ].Color:Lerp( flags["Health_High"].Color, multiplier )
                     
                     objects[ "healthbar" ].Size = UDim2.new(1, -2, multiplier, -2)
@@ -662,6 +663,7 @@ esp.player_removed = players.PlayerRemoving:Connect(function(v)
     esp:remove_object(v)
 end)
 
+end)
 end)
 
 -- proxy functions
